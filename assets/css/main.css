@@ -1,0 +1,110 @@
+@font-face {
+  font-family: "futura";
+  src: url('https://cdn.jsdelivr.net/npm/futura-font/FuturaBT-Medium.woff') format('woff');
+  font-display: swap;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "futura", sans-serif;
+}
+
+header {
+    width: 100%;
+    height: 8vh;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding-top: 0px;
+    background-color: rgba(0,0,0,0);
+}
+
+nav .logo {
+    height: 100%;
+    grid-column: 1 / span 1;
+    overflow: hidden;
+    min-width: 0;
+    justify-self: center;
+}
+
+nav .logo img {
+    display: block;
+    height: 100%;
+}
+
+
+nav .links {
+    list-style: none;
+    grid-column: 7 / 13;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+nav .links li {
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+main {
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 96%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 40px;
+}
+
+.hero {
+    grid-column: 1 / 13;
+    height: 100vh;
+    width: 100%;
+    background-color: #ff0000;
+    position: relative;
+}
+
+.hero h1{
+    position: absolute;
+    z-index: 2;
+    top: 50vh;
+    left: 8vw;
+}
+
+.hero p{
+    position: absolute;
+    top: calc(50vh + 2.125rem);
+    left: 8vw;
+}
+
+.hero .hero-interactive {
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.diagonal-seperator{
+    position: absolute;
+    z-index: 1;
+    bottom: 0rem;
+    width: 100%;
+    height: 6.25rem;
+    min-width: 480px; /* same as all column gaps combined*/
+    overflow: hidden;
+}
+
+/* Sections */
+
+main .products{
+    grid-column: 1 / 7;
+}
+
+main .what-we-do {
+    grid-column: 1 / 13;
+}

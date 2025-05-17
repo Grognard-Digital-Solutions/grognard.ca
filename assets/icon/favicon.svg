@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1104)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(2.25,0,0,2.25,50,50)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400"><svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 100 100" fill="none">
+  <style>
+    #diagonal {
+      stroke: #ff0000;
+    }
+    path {
+      stroke: #000000;
+    }
+    
+    .arc {
+      stroke: #0A0A0A;
+    }
+    
+    .arc-highlight {
+      stroke: #ea2525;
+      stroke-width: 4;
+    }
+    
+    .swish {
+      stroke: #ea2525;
+      stroke-width: 1.5;
+    }
+    
+    text {
+      fill: #000000;
+      stroke: #000000;
+      font-family: "futura", monospace;
+    }
+  </style>
+  <g id="outer-ring">
+    <!-- left to top -->
+    <path id="a1" class="arc" d="M5 50A45 45 0 0 1 50 5"></path>
+    <!-- left to top highlight -->
+    <path id="a1" class="arc-highlight" d="M10 30A45 45 0 0 1 30 10"></path>
+    
+    <!-- top to right -->
+    <path class="arc" d="M50 5A45 45 0 0 1 95 50" stroke-dasharray="4"></path>
+    
+    <!-- right to bottom -->
+    <path class="arc" d="M95 50A45 45 0 0 1 50 95"></path>
+    <!-- right to bottom highlight -->
+    <path id="a1" class="arc-highlight" d="M90 70A45 45 0 0 1 70 90"></path>
+    
+    <!-- bottom to left --> 
+    <path class="arc" d="M50 95A45 45 0 0 1 5 50" stroke-dasharray="4"></path>
+   </g>
+    
+   <g class="inner-ring">
+     <!-- left to top -->
+    <path id="a1" class="arc" d="M15 50A35 35 0 0 1 50 15"></path>
+    
+    <!-- top to right -->
+    <path class="arc-highlight" d="M50 15A35 35 0 0 1 85 50"></path>
+    
+    <!-- right to bottom -->
+    <path class="arc" d="M85 50A35 35 0 0 1 50 85"></path>
+    
+    <!-- bottom to left --> 
+    <path class="arc-highlight" d="M50 85A35 35 0 0 1 15 50"></path>
+   </g>
+    <!-- center of logo -->
+    <path id="a1" class="swish" d="M25 38A28 28 0 0 1 75 38"></path>
+    <path id="a1" class="swish" d="M25 64A28 28 0 0 0 75 64"></path>
+    <!--
+    <path id="diagonal" d="M5 50L50 5"/>
+  
+    <path id="diagonal" d="M50 5L95 50"/>
+  
+    <path id="diagonal" d="M95 50L50 95"/>
+ 
+    <path id="diagonal" d="M50 95L5 50"/>
+    -->
+    <text x="50" y="60" text-anchor="middle" font-size="26">GDS</text>
+</svg></svg></g></g><defs><clipPath id="SvgjsClipPath1104"><rect width="1000" height="1000" x="0" y="0" rx="500" ry="500"></rect></clipPath></defs></svg>
