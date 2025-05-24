@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>{{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/icon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/icon/favicon.svg" />
-    <link rel="shortcut icon" href="/assets/icon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Grognard" />
-    <link rel="manifest" href="/assets/icon/site.webmanifest" />
-
-
-    <meta property="og:title" content="{{ site.title }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ site.url }}" />
-    <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
-  </head>
+  {{ include head.html }}
   <body>
     <header>
         <nav>
@@ -38,7 +19,7 @@
         <h1>Grognard Digital Solutions</h1>
         <p>Get Better at Data</p>
         <img class="hero-interactive" src="{{ site.url }}/assets/hexacanada.svg"></svg>
-        <svg class="diagonal-seperator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" preserveAspectRatio="none"><path d="m-10 25 100 65" stroke="#000" stroke-width="6" style="filter:drop-shadow(3px -5px 5px #757575)"/><path fill="#fff" d="m0 25 100 65v10H0z"/></svg>
+        <svg class="diagonal-seperator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" preserveAspectRatio="none"><path d="m-10 25 110 65" stroke="#000" stroke-width="6" style="filter:drop-shadow(3px -5px 5px #757575)"/><path fill="#fff" d="m0 25 110 65v10H0z"/></svg>
       </div>
       <section class="what-we-do">
         <h2>What We Do</h2>
@@ -68,6 +49,9 @@
       <section class="timeline">
         <h2>What we are working on</h2>
 
+      </section>
+      <section class="timeline">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>
       </section>
     </main>
   </body>
