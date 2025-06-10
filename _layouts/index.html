@@ -1,26 +1,113 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  {{ include head.html }}
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/index.css" | relative_url }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/icon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/icon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Grognard" />
+    <link rel="manifest" href="/assets/icon/site.webmanifest" />
+
+
+    <meta property="og:title" content="{{ site.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ site.url }}" />
+    <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+  </head>
   <body>
+    {% include nav.html %}
     <header>
-        <nav>
-          <a href="https://grognard.ca" class="logo">
-            <img src="{{ site.url }}/assets/logo-animated.svg" alt="Grognard Digital Solutions Logo">
-          </a>
+      <a href="#main" id="skipToMain" class="skiptocontent">Skip To Main Content</a>
+      <svg alt="chart of users of our products." id="hero-interactive"></svg>
+      <script type="module">
+
+            import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+            let header = d3.select("#hero-interactive")
+            let customer_element = document.getElementById("analytics-total-customers")
+            let country_element = document.getElementById("analytics-total-countries")
+
+            const marginTop = 20;
+            const marginRight = 30;
+            const marginBottom = 30;
+            const marginLeft = 40;
+            const width = 1920 - marginLeft - marginRight;
+            const height = 1080 - marginTop - marginLeft;
+
+            const data = await d3.csv("{{ site.url }}/assets/data/products.stats.csv")
+
+            customer_element.innerHTML = d3.sum(data,d => d.GetItNow)
+
+            let countries = data.reduce((obj, d) => {
+
+              if (!(d.CountryName in obj) && Number(d.GetItNow) > 0){
+                obj[d.CountryName] = Number(d.GetItNow)
+              }else if(Number(d.GetItNow > 0)){
+                obj[d.CountryName] = obj[d.CountryName] + Number(d.GetItNow)
+              }
+              return obj
+            },{})
+
+            country_element.innerHTML = Object.keys(countries).length
+
+            let dates = data.reduce((obj, d) => {
+              let date = d.Date
+
+              if (!(date in obj)){
+                obj[date] = Number(d.GetItNow)
+              }else{
+                obj[date] = obj[date] + Number(d.GetItNow)
+              }
+              return obj
+            },{})
+
+            const axes = Object.entries(dates).sort((a,b) => new Date(a[0]) - new Date(b[0]))
+
+            const x = d3.scaleUtc(d3.extent(axes, d => new Date(d[0])),[marginLeft,width - marginRight])
+            const y = d3.scaleLinear([0, d3.max(axes, d => d[1])],[height - marginBottom, marginTop])
+
+            const svg = d3.select("#hero-interactive")
+              .attr("width","100%")
+              .attr("viewBox",[0,0,width,height])
+
+            const line = d3.line()
+              .x((d,i) => x(new Date(d[0])))
+              .y((d,i) => y(d[1]))
             
-          <ul class="links">
-            <li>About</li>
-            <li>Contact</li>
-          </ul>
-      </nav>
+            const x_axis = svg.append("g")
+              .attr("class","x-axis")
+              .attr("transform",`translate(0,${height - marginBottom})`)
+              .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+
+            const y_axis = svg.append("g")
+              .attr("class","y-axis")
+              .attr("transform",`translate(${marginLeft},0)`)
+              .call(d3.axisLeft(y).ticks(height / 40))
+              .call(g => g.select(".domain").remove())
+              .call(g => g.selectAll(".tick line").clone()
+                .attr("x2", width - marginLeft - marginRight)
+                .attr("stroke-opacity", 0.1))
+              .call(g => g.append("text")
+                .attr("x", 0)
+                .attr("y",10)
+                .attr("fill","currentColor")
+                .attr("text-anchor","start")
+                .text("Downloads"))
+              
+            svg.append("path")
+              .attr("fill","none")
+              .attr("stroke","#ea2525")
+              .attr("stroke-width",2.5)
+              .attr("d",line(axes))
+          </script>
     </header>
-    <main>
-      <div class="hero">
-        <h1>Grognard Digital Solutions</h1>
-        <p>Get Better at Data</p>
-        <img class="hero-interactive" src="{{ site.url }}/assets/hexacanada.svg"></svg>
-        <svg class="diagonal-seperator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" preserveAspectRatio="none"><path d="m-10 25 110 65" stroke="#000" stroke-width="6" style="filter:drop-shadow(3px -5px 5px #757575)"/><path fill="#fff" d="m0 25 110 65v10H0z"/></svg>
-      </div>
+    <main id="main">
       <section class="what-we-do">
         <h2>What We Do</h2>
         <ul>
@@ -28,6 +115,10 @@
           <li>D3 Custom Visuals</li>
         </ul>
         <a class="button-primary" href="#services">View Our Services</a>
+      </section>
+      <section>
+        <p><em id="analytics-total-customers">240+</em> Users across <em id="analytics-total-countries">46+</em> Countries </p>
+        
 
       </section>
       <section class="products">
