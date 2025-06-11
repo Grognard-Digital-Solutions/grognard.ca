@@ -78,6 +78,10 @@ header svg {
     height: auto;
 }
 
+header em, .cta {
+    color: #ea2525;
+}
+
 @media (min-width: 768px){
 
     nav{
