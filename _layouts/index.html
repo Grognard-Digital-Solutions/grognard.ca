@@ -23,18 +23,19 @@
   <body>
     {% include nav.html %}
     <header>
-      <p><em id="analytics-total-customers">240+</em> Users across <em id="analytics-total-countries">46+</em> Countries </p>
-      <p>And our journey hasn't even begun yet.</p>
-      <a href="mailto:solutions@grognard.ca" class="cta"><em>Improve with us</em></a>
       <a href="#main" id="skipToMain" class="skiptocontent">Skip To Main Content</a>
-      <svg alt="Custom Power BI Visual Downloads" id="hero-interactive"></svg>
+      
+      
+      <svg alt="Custom Power BI Visual Downloads" id="hero-interactive">
+        
+        
+
+      </svg>
       <script type="module">
 
             import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
             let header = d3.select("#hero-interactive")
-            let customer_element = document.getElementById("analytics-total-customers")
-            let country_element = document.getElementById("analytics-total-countries")
 
             const marginTop = 6.15 * parseFloat(getComputedStyle(document.documentElement).fontSize);
             const marginRight = 30;
@@ -44,8 +45,6 @@
             const height = 1080 - marginTop - marginBottom;
 
             const data = await d3.csv("{{ site.url }}/assets/data/products.stats.csv")
-
-            customer_element.innerHTML = d3.sum(data,d => d.GetItNow)
 
             let countries = data.reduce((obj, d) => {
 
@@ -57,7 +56,6 @@
               return obj
             },{})
 
-            country_element.innerHTML = Object.keys(countries).length
 
             let dates = data.reduce((obj, d) => {
               let date = d.Date
@@ -76,7 +74,9 @@
             
             const y = d3.scaleLinear([0, d3.max(axes, d => d[1])],[height - marginBottom, marginTop])
 
-             const line = d3.area()
+            
+
+            const line = d3.area()
                 .x((d,i) => x(new Date(d[0])))
                 .y0(y(0))
                 .y1((d,i) => y(d[1]))
@@ -84,6 +84,8 @@
             const svg = d3.select("#hero-interactive")
               .attr("width","100%")
               .attr("viewBox",[0,0,marginLeft + width + marginRight, marginBottom + height + marginTop])
+
+            const defs = svg.append("defs")
 
             const x_axis = svg.append("g")
               .attr("class","x-axis")
@@ -111,6 +113,30 @@
             svg.append("path")
               .attr("fill","#0F0F0F")
               .attr("d",line(axes))
+
+            const text_group = svg.append("g")
+              .attr("class","hero-text")
+              .style("mix-blend-mode","difference")
+
+            text_group.append("text")
+              .attr("x","140")
+              .attr("y","240")
+              .html(
+                `<tspan class="emphasis" id="analytics-total-customers" style="mix-blend-mode: normal;">${d3.sum(data,d => d.GetItNow)}</tspan> Users across <tspan class="emphasis" id="analytics-total-countries" style="mix-blend-mode: normal;">${Object.keys(countries).length}</tspan> Countries`
+              )
+
+            text_group.append("text")
+              .attr("x","280")
+              .attr("y","330")
+              .html(
+                `And our journey hasn't even begun yet..`
+              )
+
+            svg.append("a").attr("class","cta").attr("href","{{ site.url }}/contact").append("text")
+              .attr("x","140")
+              .attr("y","500")
+              .html(`Get Better with Grognard`)
+              
           </script>
     </header>
     <main id="main">
@@ -123,7 +149,12 @@
         </ul>
       </section>
       <section>
-      
+      <section class="products">
+        <h2>Products</h2>
+        <ul>
+          <li><a>Constellation</a></li>
+        </ul>
+      </section>
       <section class="timeline">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>
       </section>
