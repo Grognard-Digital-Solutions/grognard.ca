@@ -68,48 +68,6 @@ nav .links li:hover {
     text-decoration: underline;
 }
 
-header {
-    width: 100vw;
-    height: 56.25vw;
-}
-
-header .hero-text-row1 {
-    position: absolute;
-    top: 28.125vw;
-    left: 18%;
-
-}
-
-header svg {
-    width: 100%;
-    height: auto;
-    background: #ffffff;
-}
-
-header svg text {
-    font-size: 16px;
-}
-
-header svg g.hero-text {
-    mix-blend-mode: difference;
-}
-
-header svg g.hero-text text {
-    font: normal 64px "futura";
-    fill: #ffffff;
-}
-
-header svg g.hero-text tspan.emphasis, .cta{
-    font: normal 64px "futura";
-    fill: #15dada;
-}
-
-header svg .cta text{
-    font: normal 64px "futura";
-    fill: #ea2525;
-    text-decoration: underline;
-}
-
 /* Sections */
 
 main {
@@ -125,14 +83,38 @@ section{
     padding: 2rem;
 }
 
-main .what-we-do {
+main .email {
+    grid-column: span 2;
+}
+
+main .email p {
+    margin-top: 2rem;
+    color: #ea2525;
+}
+
+main .appointment {
     grid-column: span 3;
 }
 
-main .products{
+main .appointment iframe {
+    margin-top: 2rem;
+    border-radius: 2rem;
+    min-height: 35rem;
+}
+
+main .social-media {
     grid-column: span 3;
 }
 
+main .social-media ul {
+    padding-top: 2rem;
+    list-style: none;
+}
+
+main .social-media .icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+}
 
 footer{
     padding-top: 160px;
