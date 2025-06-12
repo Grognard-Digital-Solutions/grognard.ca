@@ -87,9 +87,12 @@ main .email {
     grid-column: span 2;
 }
 
+main .email a {
+    color: #ea2525;
+}
+
 main .email p {
     margin-top: 2rem;
-    color: #ea2525;
 }
 
 main .appointment {
@@ -100,6 +103,7 @@ main .appointment iframe {
     margin-top: 2rem;
     border-radius: 2rem;
     min-height: 35rem;
+    width: 100%;
 }
 
 main .social-media {
@@ -135,6 +139,10 @@ footer{
     main{ 
         display: grid;
         grid-template-columns: repeat(6, 1fr);
+    }
+
+    main .appointment {
+        grid-column: span 4;
     }
     
 }
