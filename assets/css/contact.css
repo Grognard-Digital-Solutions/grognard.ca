@@ -124,6 +124,21 @@ footer{
     padding-top: 160px;
 }
 
+footer{
+    padding-top: 4rem;
+    background-color: #000000;
+    color: #fff;
+}
+
+footer ul {
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+footer a {
+    color: #fff;
+}
+
 @media (min-width: 768px){
 
     nav{

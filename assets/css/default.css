@@ -116,25 +116,91 @@ header svg .cta text{
     text-decoration: underline;
 }
 
-/* Sections */
-
 main {
+    margin-top: 12rem;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
+    margin-bottom: 6rem;
 }
 
-section{
-    padding: 2rem;
+main p, h1, h2, h3, h4, li {
+    padding-left: 2rem;
+    padding-top: 0.2rem;
 }
 
-main .what-we-do {
-    grid-column: span 3;
+/* AI Slop */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "futura", sans-serif;
+    margin: 2rem 0;
 }
 
-main .products{
-    grid-column: span 3;
+th, td {
+    border: 1px solid #000000;
+    padding: 1rem 2rem;
+    text-align: left;
+    font-size: 1rem;
+}
+
+th {
+    background-color: #f0f0f0;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tr:hover {
+    background-color: #e6f7f7;
+}
+
+caption {
+    caption-side: top;
+    font-size: 1.5rem;
+    font-weight: normal;
+    padding: 1rem;
+    text-align: left;
+    color: #000;
+}
+
+code, pre {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.95rem;
+    background-color: #f8f8f8;
+    color: #000000;
+    border: 1px solid #cccccc;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    line-height: 1.5;
+}
+
+pre {
+    display: block;
+    overflow-x: auto;
+    padding: 1rem;
+    margin: 2rem 0;
+    white-space: pre;
+    background-color: #f4f4f4;
+    border-left: 4px solid #15dada;
+    font-size: 1rem;
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.2rem;
+}
+
+/* Optional: inline code inside paragraphs */
+p code {
+    color: #ea2525;
+    background-color: #fff5f5;
+    border: 1px solid #ea2525;
 }
 
 footer{
@@ -163,10 +229,4 @@ footer a {
     nav .links{
         grid-column: 7 / 13;
     }
-
-    main{ 
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-    }
-    
 }
