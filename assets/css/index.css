@@ -110,20 +110,6 @@ header svg .cta text{
     text-decoration: underline;
 }
 
-@media (min-width: 768px){
-
-    nav{
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-
-    }
-
-    nav .links{
-        grid-column: 7 / 13;
-    }
-    
-}
-
 /* Sections */
 
 main {
@@ -135,10 +121,38 @@ main {
     column-gap: 20px;
 }
 
+section{
+    padding: 2rem;
+}
+
 main .what-we-do {
-    grid-column: 1 / 3;
+    grid-column: 1 / span 3;
 }
 
 main .products{
-    grid-column: 1 / 3;
+    grid-column: 1 / span 3;
+}
+
+
+footer{
+    padding-top: 160px;
+}
+
+@media (min-width: 768px){
+
+    nav{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+
+    }
+
+    nav .links{
+        grid-column: 7 / 13;
+    }
+
+    main{ 
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
 }
