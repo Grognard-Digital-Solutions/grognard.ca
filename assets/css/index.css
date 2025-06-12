@@ -10,6 +10,11 @@
     font-family: "futura", sans-serif;
 }
 
+body {
+    overflow-y: scroll;
+    width: 100%;
+}
+
 a {
     color: #000000;
 }
@@ -69,8 +74,9 @@ nav .links li:hover {
 }
 
 header {
-    width: 100vw;
-    height: 56.25vw;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
 }
 
 header .hero-text-row1 {
@@ -113,9 +119,7 @@ header svg .cta text{
 /* Sections */
 
 main {
-    padding-left: 2%;
-    padding-right: 2%;
-    width: 96%;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;

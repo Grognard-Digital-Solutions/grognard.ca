@@ -38,9 +38,9 @@
             let header = d3.select("#hero-interactive")
 
             const marginTop = 6.15 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-            const marginRight = 30;
+            const marginRight = 10;
             const marginBottom = 30;
-            const marginLeft = 40;
+            const marginLeft = 30;
             const width = 1920 - marginLeft - marginRight;
             const height = 1080 - marginTop - marginBottom;
 
@@ -90,7 +90,7 @@
             const x_axis = svg.append("g")
               .attr("class","x-axis")
               .attr("transform",`translate(0,${height - marginBottom})`)
-              .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+              .call(d3.axisBottom(x).ticks(width / 80).tickFormat(d3.utcFormat("%d")).tickSizeOuter(0))
 
             const y_axis = svg.append("g")
               .attr("transform", `translate(${marginLeft},0)`)
@@ -99,18 +99,16 @@
               .call(g => g.selectAll(".tick line").clone()
               .attr("x2", width - marginLeft - marginRight)
               .attr("stroke-opacity", 0.1))
-              .call(g => g.selectAll(".tick line").clone()
-              .attr("x2", width - marginLeft - marginRight)
-              .attr("stroke-opacity", 0.1))
               .append("text")
                 .attr("x", 10)
                 .attr("y",height + marginBottom)
-                .attr("font-size","2rem")
+                .style("font-size","2rem")
                 .attr("fill","currentColor")
                 .attr("text-anchor","start")
-                .text("Microsoft AppSource Downloads")
+                .text("Microsoft AppSource Downloads by Day")
 
             svg.append("path")
+              .attr("transform",`translate(0,0)`)
               .attr("fill","#0F0F0F")
               .attr("d",line(axes))
 
