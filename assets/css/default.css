@@ -125,7 +125,10 @@ main {
 
 main p, h1, h2, h3, h4, li {
     padding-left: 2rem;
-    padding-top: 0.2rem;
+}
+
+main h1, h2, h3, h4 {
+    padding-top: 4rem;
 }
 
 /* AI Slop */
